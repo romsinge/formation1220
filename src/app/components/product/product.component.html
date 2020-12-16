@@ -1,0 +1,13 @@
+<div>
+    <div class="header">
+        <strong>{{ productData.title }}</strong>
+        <span>{{ productData.price }}</span>
+    </div>
+    <div>
+        <app-product-image
+            [imageUrl]="productData.image"
+            (detailsClick)="handleDetailsClick()"
+            (cartClick)="handleCartClick()"
+        ></app-product-image>
+    </div>
+</div>
