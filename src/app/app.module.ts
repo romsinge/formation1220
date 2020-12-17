@@ -10,6 +10,7 @@ import { MaterialComponentsModule } from './modules/material-components/material
 import { UrlBeautifierPipe } from './pipes/url-beautifier.pipe'
 import { FormsModule } from '@angular/forms';
 import { PriceSortPipe } from './pipes/price-sort.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PriceSortPipe } from './pipes/price-sort.pipe';
     ProductImageComponent,
     HiddenDisplayDirective,
     UrlBeautifierPipe,
-    PriceSortPipe
+    PriceSortPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

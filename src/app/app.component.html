@@ -4,7 +4,7 @@
 <input type="text" [(ngModel)]="search">
 <br>
 
-<app-product *ngFor="let product of products | priceSort" [productData]="product"></app-product>
+<app-product *ngFor="let product of products | priceSort | search:search" [productData]="product"></app-product>
 
 <pre>
     {{ products | json }}
