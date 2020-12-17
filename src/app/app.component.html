@@ -1,11 +1,4 @@
 <!-- Interpolation -->
 <h1>Bienvenue chez {{ title }}</h1>
 
-<input type="text" #searchInput>
-<br>
-
-<app-product *ngFor="let product of products | priceSort | search:(search$ | async)" [productData]="product"></app-product>
-
-<pre>
-    {{ products | json }}
-</pre>
+<app-catalog></app-catalog>

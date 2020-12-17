@@ -11,6 +11,8 @@ import { UrlBeautifierPipe } from './pipes/url-beautifier.pipe'
 import { FormsModule } from '@angular/forms';
 import { PriceSortPipe } from './pipes/price-sort.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { CartComponent } from './components/cart/cart.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SearchPipe } from './pipes/search.pipe';
     HiddenDisplayDirective,
     UrlBeautifierPipe,
     PriceSortPipe,
-    SearchPipe
+    SearchPipe,
+    CartComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
