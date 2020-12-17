@@ -1,6 +1,6 @@
-<div class="container" [ngStyle]="{ backgroundImage: 'url(' + imageUrl + ')' }">
+<div class="container" [style.background-image]="'url(' + imageUrl + ')'">
 </div>
-<div class="buttons-container">
+<div class="buttons-container" appHiddenDisplay="black">
     <button (click)="handleDetailsClick()">Details</button>
     <button (click)="handleCartClick()">Add to Cart</button>
 </div>
