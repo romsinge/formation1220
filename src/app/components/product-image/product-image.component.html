@@ -1,4 +1,4 @@
-<div class="container" [style.background-image]="'url(' + imageUrl + ')'">
+<div class="container" [style.background-image]="imageUrl | urlBeautifier">
 </div>
 <div class="buttons-container" appHiddenDisplay="black">
     <button (click)="handleDetailsClick()">Details</button>

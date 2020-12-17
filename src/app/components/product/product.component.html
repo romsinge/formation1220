@@ -1,7 +1,8 @@
 <mat-card>
     <div class="header">
         <strong>{{ productData.title }}</strong>
-        <span>{{ productData.price }}</span>
+        <br>
+        <span>{{ productData.price | currency:'EUR' }}</span>
     </div>
     <div>
         <app-product-image
