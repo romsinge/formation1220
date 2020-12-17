@@ -1,4 +1,4 @@
 <!-- Interpolation -->
 <h1>Bienvenue chez {{ title }}</h1>
 
-<app-product></app-product>
+<app-product *ngFor="let product of products" [productData]="product"></app-product>

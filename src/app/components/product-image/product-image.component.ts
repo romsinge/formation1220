@@ -11,7 +11,7 @@ export class ProductImageComponent implements OnInit {
   @Output() cartClick: EventEmitter<any> = new EventEmitter()
   @Output() detailsClick: EventEmitter<any> = new EventEmitter()
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
