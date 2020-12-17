@@ -12,6 +12,12 @@ export class DataService {
     return this._products
   }
 
+  getProductById(id: number): Product {
+    return this.products.find((product) => {
+      return product.id == id
+    })
+  }
+
   private _products: Product[] = [
     {
       "id": 1,

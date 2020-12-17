@@ -13,6 +13,7 @@ import { PriceSortPipe } from './pipes/price-sort.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
+import { AppRoutingModule } from './app-routing.module'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CatalogComponent } from './components/catalog/catalog.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialComponentsModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
