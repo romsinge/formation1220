@@ -9,6 +9,8 @@ import { Product } from './models/product.model';
 export class AppComponent {
   title = 'AMBIENT-IT Shop';
 
+  search: string = 'test'
+
   products: Product[] = [
     {
       "id": 1,

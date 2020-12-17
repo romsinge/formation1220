@@ -8,6 +8,8 @@ import { HiddenDisplayDirective } from './directives/hidden-display.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './modules/material-components/material-components.module';
 import { UrlBeautifierPipe } from './pipes/url-beautifier.pipe'
+import { FormsModule } from '@angular/forms';
+import { PriceSortPipe } from './pipes/price-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { UrlBeautifierPipe } from './pipes/url-beautifier.pipe'
     ProductComponent,
     ProductImageComponent,
     HiddenDisplayDirective,
-    UrlBeautifierPipe
+    UrlBeautifierPipe,
+    PriceSortPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

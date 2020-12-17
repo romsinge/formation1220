@@ -1,7 +1,10 @@
 <!-- Interpolation -->
 <h1>Bienvenue chez {{ title }}</h1>
 
-<app-product *ngFor="let product of products" [productData]="product"></app-product>
+<input type="text" [(ngModel)]="search">
+<br>
+
+<app-product *ngFor="let product of products | priceSort" [productData]="product"></app-product>
 
 <pre>
     {{ products | json }}

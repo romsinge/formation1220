@@ -13,3 +13,7 @@ export class UrlBeautifierPipe implements PipeTransform {
 // } else {
 //   return ''
 // }
+
+// PIPE No 1 : trier les produits de la liste par prix
+// PIPE No 2 : ajouter une searchbar au dessus de la liste et afficher
+// les produits qui correspondent a la recherche
