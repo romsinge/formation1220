@@ -1,10 +1,10 @@
 <!-- Interpolation -->
 <h1>Bienvenue chez {{ title }}</h1>
 
-<input type="text" [(ngModel)]="search">
+<input type="text" #searchInput>
 <br>
 
-<app-product *ngFor="let product of products | priceSort | search:search" [productData]="product"></app-product>
+<app-product *ngFor="let product of products | priceSort | search:(search$ | async)" [productData]="product"></app-product>
 
 <pre>
     {{ products | json }}

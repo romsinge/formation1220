@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Product } from './models/product.model';
+import { fromEvent, Observable } from 'rxjs'
+import { debounceTime, map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,15 @@ import { Product } from './models/product.model';
 export class AppComponent {
   title = 'AMBIENT-IT Shop';
 
-  search: string = 'test'
+  @ViewChild('searchInput') searchInputRef: ElementRef
+
+  search$: Observable<string>
+
+  ngAfterViewInit(): void {
+    this.search$ = fromEvent<string>(this.searchInputRef.nativeElement, 'keyup')
+      .pipe(debounceTime(1000))
+      .pipe(map((event: any) => event.target.value))
+  }
 
   products: Product[] = [
     {
