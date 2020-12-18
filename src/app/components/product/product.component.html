@@ -1,23 +1,23 @@
-<mat-card *ngIf="!isDetails; else productDetails">
-    <div class="header">
-        <strong>{{ productData.title }}</strong>
-        <br>
-        <span>{{ productData.price | currency:'EUR' }}</span>
-    </div>
-    <div>
-        <app-product-image
-            [imageUrl]="productData.image"
-            (detailsClick)="handleDetailsClick()"
-            (cartClick)="handleCartClick()"
-        ></app-product-image>
-    </div>
-</mat-card>
+<div class="header" *ngIf="(asyncProductData$ | async) as product; else catalogProduct">
+    <strong>{{ product.title }}</strong>
+    <br>
+    <span>{{ product.price | currency:'EUR' }}</span>
+    <p>{{ product.description }}</p>
+</div>
 
-<ng-template #productDetails>
-    <div class="header" *ngIf="(asyncProductData$ | async) as product">
-        <strong>{{ product.title }}</strong>
-        <br>
-        <span>{{ product.price | currency:'EUR' }}</span>
-        <p>{{ product.description }}</p>
-    </div>
+<ng-template #catalogProduct>
+    <mat-card>
+        <div class="header">
+            <strong>{{ productData?.title }}</strong>
+            <br>
+            <span>{{ productData?.price | currency:'EUR' }}</span>
+        </div>
+        <div>
+            <app-product-image
+                [imageUrl]="productData?.image"
+                (detailsClick)="handleDetailsClick()"
+                (cartClick)="handleCartClick()"
+            ></app-product-image>
+        </div>
+    </mat-card>
 </ng-template>
