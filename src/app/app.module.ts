@@ -8,7 +8,7 @@ import { HiddenDisplayDirective } from './directives/hidden-display.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './modules/material-components/material-components.module';
 import { UrlBeautifierPipe } from './pipes/url-beautifier.pipe'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PriceSortPipe } from './pipes/price-sort.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { CartComponent } from './components/cart/cart.component';
@@ -38,6 +38,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
     BrowserAnimationsModule,
     MaterialComponentsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
