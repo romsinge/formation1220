@@ -1,19 +1,21 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-image',
   templateUrl: './product-image.component.html',
-  styleUrls: ['./product-image.component.scss']
+  styleUrls: ['./product-image.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductImageComponent implements OnInit {
+export class ProductImageComponent {
 
   @Input() imageUrl: string = ''
   @Output() cartClick: EventEmitter<any> = new EventEmitter()
   @Output() detailsClick: EventEmitter<any> = new EventEmitter()
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.cdr.detach()
   }
 
   handleDetailsClick(): void {
