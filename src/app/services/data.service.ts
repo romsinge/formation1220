@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,13 +9,12 @@ import { Product } from '../models/product.model';
 })
 export class DataService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   get products(): Observable<Product[]> {
-    return new Observable((observer) => {
-      observer.next(this._products)
-      observer.complete()
-    })
+    // return <Observable<Product[]>>this.http.get('http://localhost:3000/products')
+    // return this.http.get('http://localhost:3000/products') as Observable<Product[]>
+    return this.http.get<Product[]>('http://localhost:3000/products')
   }
 
   getProductById(id: number): Observable<Product> {
@@ -25,12 +25,5 @@ export class DataService {
     })))
   }
 
-  private _products: Product[] = [{
-    "id": 1,
-    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-    "price": 109.95,
-    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    "category": "men clothing",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-}]
+  private _products: Product[] = []
 }

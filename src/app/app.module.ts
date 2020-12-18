@@ -14,6 +14,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { AppRoutingModule } from './app-routing.module'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AppRoutingModule } from './app-routing.module'
     BrowserAnimationsModule,
     MaterialComponentsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
