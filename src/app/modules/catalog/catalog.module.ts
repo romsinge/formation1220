@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { CatalogComponent } from 'src/app/components/catalog/catalog.component';
 import { ProductComponent } from 'src/app/components/product/product.component';
+import { CreateProductComponent } from 'src/app/components/create-product/create-product.component'
 
 const ROUTES: Route[] = [
   {
@@ -12,6 +13,10 @@ const ROUTES: Route[] = [
   {
       path: 'details/:id',
       component: ProductComponent
+  },
+  {
+      path: 'create',
+      component: CreateProductComponent
   },
 ]
 

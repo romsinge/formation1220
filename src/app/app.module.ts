@@ -16,7 +16,8 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { AppRoutingModule } from './app-routing.module'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './components/login/login.component';
+import { CreateProductComponent } from './components/create-product/create-product.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginComponent } from './components/login/login.component'
     SearchPipe,
     CartComponent,
     CatalogComponent,
-    LoginComponent
+    LoginComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
