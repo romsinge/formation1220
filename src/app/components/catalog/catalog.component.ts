@@ -14,7 +14,7 @@ export class CatalogComponent {
   @ViewChild('searchInput') searchInputRef: ElementRef
 
   search$: Observable<string>
-  products: Product[] = []
+  products$: Observable<Product[]>
 
   ngAfterViewInit(): void {
     this.search$ = fromEvent<string>(this.searchInputRef.nativeElement, 'keyup')
@@ -23,7 +23,7 @@ export class CatalogComponent {
   }
 
   ngOnInit(): void {
-    this.products = this.dataService.products
+    this.products$ = this.dataService.products
   }
 
   constructor(private dataService: DataService) {}

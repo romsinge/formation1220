@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="!isDetails; else productDetails">
     <div class="header">
         <strong>{{ productData.title }}</strong>
         <br>
@@ -12,3 +12,12 @@
         ></app-product-image>
     </div>
 </mat-card>
+
+<ng-template #productDetails>
+    <div class="header" *ngIf="(asyncProductData$ | async) as product">
+        <strong>{{ product.title }}</strong>
+        <br>
+        <span>{{ product.price | currency:'EUR' }}</span>
+        <p>{{ product.description }}</p>
+    </div>
+</ng-template>
