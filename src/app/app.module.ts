@@ -14,7 +14,8 @@ import { SearchPipe } from './pipes/search.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { AppRoutingModule } from './app-routing.module'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { ErrorInterceptor } from './interceptors/error.interceptor'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,13 @@ import { HttpClientModule } from '@angular/common/http'
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

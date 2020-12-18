@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { Product } from 'src/app/models/product.model'
 import { DataService } from 'src/app/services/data.service';
 
@@ -27,10 +27,12 @@ export class ProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.asyncProductData$ = this.route.params.pipe(switchMap((params => {
-      this.isDetails = true
-      return this.dataService.getProductById(params.id)
-    })))
+    this.asyncProductData$ = this.route.params
+      .pipe(filter(params => params.id))
+      .pipe(switchMap((params => {
+        this.isDetails = true
+        return this.dataService.getProductById(params.id)
+      })))
   }
 
 }

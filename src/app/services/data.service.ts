@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -14,7 +14,21 @@ export class DataService {
   get products(): Observable<Product[]> {
     // return <Observable<Product[]>>this.http.get('http://localhost:3000/products')
     // return this.http.get('http://localhost:3000/products') as Observable<Product[]>
-    return this.http.get<Product[]>('http://localhost:3000/products')
+
+    // let getProducts$ = this.http.get<Product[]>('http://localhost:3000/products')
+
+    // getProducts$.subscribe({
+    //   error: (err) => {
+    //     console.log('ERROR :', err)
+    //   }
+    // })
+
+    // return getProducts$
+
+    return this.http.get<Product[]>('http://localhost:3000/products').pipe(catchError((err) => {
+      console.log(err)
+      return throwError(err)
+    }))
   }
 
   getProductById(id: number): Observable<Product> {
