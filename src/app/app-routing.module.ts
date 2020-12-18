@@ -10,10 +10,6 @@ const ROUTES: Route[] = [
         loadChildren: () => import('./modules/catalog/catalog.module').then(m => m.CatalogModule)
     },
     {
-        path: 'details/:id',
-        component: ProductComponent
-    },
-    {
         path: 'cart',
         loadChildren: () => import('./modules/cart/cart.module').then(m => m.CartModule)
     },

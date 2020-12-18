@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
   isDetails: boolean = false
 
   handleDetailsClick() {
-    this.router.navigate(['/details', this.productData.id])
+    this.router.navigate(['/catalog', 'details', this.productData.id])
   }
 
   handleCartClick() {
