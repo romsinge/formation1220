@@ -3,14 +3,24 @@
 
     <label for="title">Title</label>
     <input type="text" formControlName="title">
+    <ng-container *ngFor="let errorMessage of validationS.errorMessages | keyvalue">
+        <span *ngIf="productForm.controls.title.hasError(errorMessage.key)" style="color: red;">
+            {{ errorMessage.value }}
+        </span>
+    </ng-container>
 
     <br>
 
     <label for="price">Price</label>
     <input type="number" step="1" formControlName="price">
+    <ng-container *ngFor="let errorMessage of validationS.errorMessages | keyvalue">
+        <span *ngIf="productForm.controls.price.hasError(errorMessage.key)" style="color: red;">
+            {{ errorMessage.value }}
+        </span>
+    </ng-container>
 
     <br>
 
-    <button type="submit">Create</button>
+    <button [disabled]="productForm.invalid" type="submit">Create</button>
 
 </form>

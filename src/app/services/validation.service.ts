@@ -9,6 +9,12 @@ import { DataService } from './data.service';
 })
 export class ValidationService {
 
+  errorMessages: any = {
+    required: "Field required",
+    moreThanZero: "Must be more than zero",
+    isTitleAvailable: "Title must be new"
+  }
+
   moreThanZero(control: FormControl): ValidationErrors | undefined {
     return control.value && control.value > 0 ? undefined : {
       moreThanZero: true

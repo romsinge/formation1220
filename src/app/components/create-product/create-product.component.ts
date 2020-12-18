@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
+import { DataService } from 'src/app/services/data.service';
 import { ValidationService } from '../../services/validation.service'
 
 @Component({
@@ -11,21 +14,25 @@ export class CreateProductComponent implements OnInit {
 
   productForm: FormGroup
 
-  constructor(private validationS: ValidationService) { }
+  constructor(
+    public validationS: ValidationService,
+    private dataService: DataService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
       title: new FormControl('', [ Validators.required ], [ this.validationS.isTitleAvailable() ]),
       price: new FormControl(0, [ this.validationS.moreThanZero ])
     })
-
-    // EX 1: creer un validateur pour title asynchrone qui verifie que le nom n'est pas deja pris dans la db (utiliser dataService)
-    // EX 2 : enregistrer le nouveau produit cree dans la db
-    // EX 3 : creer un objet errorMessages et qui permet d'afficher dynamiquement les messages d'erreur
   }
 
   handleSubmit() {
-    console.log(this.productForm)
+    this.dataService.saveProduct(this.productForm.value).subscribe({
+      next: (product: Product) => {
+        this.router.navigateByUrl('/catalog')
+      }
+    })
   }
 
 }
