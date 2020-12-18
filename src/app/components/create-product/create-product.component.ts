@@ -15,9 +15,13 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
-      title: new FormControl('', [ Validators.required ]),
+      title: new FormControl('', [ Validators.required ], [ this.validationS.isTitleAvailable() ]),
       price: new FormControl(0, [ this.validationS.moreThanZero ])
     })
+
+    // EX 1: creer un validateur pour title asynchrone qui verifie que le nom n'est pas deja pris dans la db (utiliser dataService)
+    // EX 2 : enregistrer le nouveau produit cree dans la db
+    // EX 3 : creer un objet errorMessages et qui permet d'afficher dynamiquement les messages d'erreur
   }
 
   handleSubmit() {

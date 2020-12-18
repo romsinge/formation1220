@@ -39,5 +39,13 @@ export class DataService {
     })))
   }
 
+  isProductTitleAvailable(title: string): Observable<boolean> {
+    return this.products.pipe(map(products => {
+      return !products.find((product) => {
+        return product.title == title
+      })
+    }))
+  }
+
   private _products: Product[] = []
 }
