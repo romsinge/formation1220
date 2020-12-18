@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Route, RouterModule } from '@angular/router'
-import { CatalogComponent } from './components/catalog/catalog.component'
-import { CartComponent } from './components/cart/cart.component'
-import { ProductComponent } from './components/product/product.component';
 
 const ROUTES: Route[] = [
     {
@@ -12,6 +9,10 @@ const ROUTES: Route[] = [
     {
         path: 'cart',
         loadChildren: () => import('./modules/cart/cart.module').then(m => m.CartModule)
+    },
+    {
+        path: 'auth',
+        loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
     },
     {
         path: '**',
