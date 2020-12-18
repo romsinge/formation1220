@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { DataService } from 'src/app/services/data.service';
 import { ValidationService } from '../../services/validation.service'
+import { SubSink } from 'subsink'
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-product',
@@ -13,6 +16,7 @@ import { ValidationService } from '../../services/validation.service'
 export class CreateProductComponent implements OnInit {
 
   productForm: FormGroup
+  subsink: SubSink = new SubSink()
 
   constructor(
     public validationS: ValidationService,
@@ -28,11 +32,15 @@ export class CreateProductComponent implements OnInit {
   }
 
   handleSubmit() {
-    this.dataService.saveProduct(this.productForm.value).subscribe({
+    this.subsink.add(this.dataService.saveProduct(this.productForm.value).pipe(first()).subscribe({
       next: (product: Product) => {
         this.router.navigateByUrl('/catalog')
       }
-    })
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subsink.unsubscribe()
   }
 
 }
