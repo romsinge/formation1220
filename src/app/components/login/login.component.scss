@@ -1,0 +1,7 @@
+input.ng-valid.ng-touched {
+    border: dashed 3px green;
+}
+
+input.ng-invalid.ng-touched {
+    border: dashed 3px red;
+}
